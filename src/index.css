@@ -1,0 +1,12 @@
+@import "https://fonts.googleapis.com/css2?family=Rubik+Burned&display=swap";
+@import "tailwindcss";
+
+
+@theme {
+  --font-cactus: 'Rubik Burned', cursive;
+}
+
+body {
+  @apply bg-black text-white;
+  scroll-behavior: smooth;
+}
