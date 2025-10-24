@@ -1,18 +1,12 @@
 import { useEffect, useState } from "react";
 
-const images = [
-  "/images/portrait1.jpg",
-  "/images/portrait2.jpg",
-  "/images/portrait3.jpg",
-];
-
 export default function Hero() {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 20;
-      const y = (e.clientY / window.innerHeight - 0.5) * 20;
+      const x = (e.clientX / window.innerWidth - 0.5) * 40; // schnellerer Parallax
+      const y = (e.clientY / window.innerHeight - 0.5) * 40;
       setOffset({ x, y });
     };
 
@@ -22,29 +16,27 @@ export default function Hero() {
 
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background images with parallax */}
+      {/* Hintergrundbild mit Parallax-Effekt */}
       <div className="absolute inset-0">
-        {images.map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt={`bg-${i}`}
-            className="absolute inset-0 w-full h-full object-cover opacity-50 transition-transform duration-500"
-            style={{
-              transform: `translate(${offset.x * (i + 1)}px, ${offset.y * (i + 1)}px) scale(1.05)`,
-              zIndex: i,
-            }}
-          />
-        ))}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/90"></div>
+        <img
+          src="/images/portrait-2.jpeg"
+          alt="portrait"
+          className="absolute inset-0 w-full h-full object-cover brightness-90 transition-transform duration-300 ease-out"
+          style={{
+            transform: `translate(${offset.x}px, ${offset.y}px) scale(1.05)`,
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/40"></div>
       </div>
 
-      {/* Content layer */}
+      {/* Inhaltsebene */}
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between w-full max-w-6xl px-6 md:px-12">
-        {/* Name */}
-        <h1 className="text-orange-500 font-cactus text-6xl md:text-8xl tracking-wide drop-shadow-[0_0_15px_rgba(255,120,0,0.6)] mb-6 md:mb-0 md:mr-12">
-          Christoph Welser
-        </h1>
+        {/* Logo statt Text */}
+        <img
+          src="/images/logo-cw-white.svg"
+          alt="Christoph Welser Logo"
+          className="w-64 md:w-80 drop-shadow-[0_0_20px_rgba(255,120,0,0.4)] mb-6 md:mb-0 md:mr-12"
+        />
 
         {/* Text / Slogan */}
         <div className="text-white text-center md:text-left max-w-md md:max-w-lg">
@@ -52,10 +44,32 @@ export default function Hero() {
             Kreativer Filmemacher & Medientechniker. Interaktive Kurzfilme und cineastische Projekte.
           </p>
           <p className="text-gray-300">
-            Ich erzähle Geschichten, die bewegen – vom Konzept bis zum fertigen Film. Scroll nach unten, um meine Arbeiten zu entdecken.
+            Ich erzähle Geschichten, die bewegen – vom Konzept bis zum fertigen Film.  
+            Scroll nach unten, um meine Arbeiten zu entdecken.
           </p>
         </div>
       </div>
+      <div
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer"
+        onClick={() => {
+          const nextSection = document.querySelector("#everything-beautiful"); // ID vom Abschnitt unter Hero
+          if (nextSection) {
+            nextSection.scrollIntoView({ behavior: "smooth" });
+          }
+        }}
+      >
+        <svg
+          className="w-12 h-12 text-white animate-bounce"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+
+
     </div>
   );
 }

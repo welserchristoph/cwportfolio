@@ -35,16 +35,17 @@ export default function Remnants() {
       ref={sectionRef}
       className="snap-start min-h-screen flex flex-col md:flex-row items-center justify-center p-6 gap-6 bg-black"
     >
-      {/* Info links */}
-      <div className="w-full md:w-1/5 flex flex-col justify-center gap-4">
-        <h2 className="text-3xl font-bold text-orange-400">{video.title}</h2>
-        <p className="text-gray-300">{video.desc}</p>
-        <div className="flex flex-wrap gap-2">
-            <span className="bg-orange-400 text-black px-2 py-1 rounded text-sm">Camera Operator</span>
-            <span className="bg-orange-400 text-black px-2 py-1 rounded text-sm">DIT</span>
-        </div>
-    
-      </div>
+      {/* Info */}
+<div className="w-full md:w-1/5 flex flex-col justify-center gap-4">
+  <h2 className="text-3xl font-bold text-white font-montserrat">{video.title}</h2>
+  <p className="text-gray-300 font-montserrat">{video.desc}</p>
+  <div className="flex flex-wrap gap-2">
+    {/* Dezente Tags */}
+    <span className="bg-gray-700 text-gray-200 px-2 py-1 rounded text-sm">Camera Operator</span>
+    <span className="bg-gray-700 text-gray-200 px-2 py-1 rounded text-sm">DIT</span>
+  </div>
+</div>
+
 
       {/* Video rechts */}
       <div

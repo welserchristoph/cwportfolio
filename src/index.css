@@ -1,12 +1,14 @@
-@import "https://fonts.googleapis.com/css2?family=Rubik+Burned&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Rubik+Burned&family=Montserrat:wght@400;500;700&display=swap";
 @import "tailwindcss";
 
 
+
 @theme {
-  --font-cactus: 'Rubik Burned', cursive;
+  --font-montserrat: 'Montserrat', sans-serif;
 }
 
+
 body {
-  @apply bg-black text-white;
+  @apply bg-black text-white font-montserrat;
   scroll-behavior: smooth;
 }

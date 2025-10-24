@@ -1,5 +1,4 @@
 import Hero from "./components/Hero";
-import Films from "./components/Films";
 import Contact from "./pages/Contact";
 import Remnants from "./components/Remnants";
 import SpikedSection from "./components/SpikedSection";
@@ -12,7 +11,7 @@ export default function App() {
         <Hero />
       </section>
 
-      <section className="snap-start">
+      <section id="everything-beautiful" className="snap-start">
         <EverythingBeautiful/>
       </section>
 

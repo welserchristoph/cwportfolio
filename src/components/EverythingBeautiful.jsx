@@ -59,15 +59,17 @@ export default function EverythingBeautiful() {
         />
       </div>
 
-      {/* Info */}
-      <div className="w-full md:w-1/5 flex flex-col justify-center gap-4">
-        <h2 className="text-3xl font-bold text-orange-400">{video.title}</h2>
-        <p className="text-gray-300">{video.desc}</p>
-        <div className="flex flex-wrap gap-2">
-            <span className="bg-orange-400 text-black px-2 py-1 rounded text-sm">Gaffer</span>
-            <span className="bg-orange-400 text-black px-2 py-1 rounded text-sm">AC</span>
-        </div>
-      </div>
+{/* Info */}
+<div className="w-full md:w-1/5 flex flex-col justify-center gap-4">
+  <h2 className="text-3xl font-bold text-white font-montserrat">{video.title}</h2>
+  <p className="text-gray-300 font-montserrat">{video.desc}</p>
+  <div className="flex flex-wrap gap-2">
+    {/* Dezente Tags */}
+    <span className="bg-gray-700 text-gray-200 px-2 py-1 rounded text-sm">Gaffer</span>
+    <span className="bg-gray-700 text-gray-200 px-2 py-1 rounded text-sm">AC</span>
+  </div>
+</div>
+
     </div>
   );
 }
