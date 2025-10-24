@@ -24,23 +24,24 @@ export default async function handler(req, res) {
       },
     });
 
-    // Mail-Inhalt
-    const mailOptions = {
-      from: `"Portfolio Kontaktformular" <${process.env.GMAIL_USER}>`,
-      to: process.env.GMAIL_USER, // an dich selbst
-      subject: `Neue Nachricht von ${name}`,
-      text: `
+
+    (async () => {
+  const info = await transporter.sendMail({
+    from: `"Portfolio Kontaktformular" <${process.env.GMAIL_USER}>`,
+    to: process.env.GMAIL_USER,
+    subject: `Neue Nachricht von ${name}`,
+    text:  `
         Name: ${name}
         Email: ${email}
         
         Nachricht:
         ${message}
       `,
-      replyTo: email,
-    };
+  });
 
-    // Mail senden
-    await transporter.sendMail(mailOptions);
+  console.log("Message sent:", info.messageId);
+})();
+    
 
     return res.status(200).json({ success: true });
   } catch (error) {
