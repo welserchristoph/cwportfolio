@@ -3,10 +3,29 @@ import { useState } from "react";
 export default function Contact() {
   const [formStatus, setFormStatus] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setFormStatus("Danke! Ich melde mich bald bei dir.");
-  };
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const data = Object.fromEntries(formData.entries());
+
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      setFormStatus("Danke! Ich melde mich bald bei dir.");
+      e.target.reset();
+    } else {
+      setFormStatus("Fehler beim Senden. Bitte versuche es später.");
+    }
+  } catch (err) {
+    setFormStatus("Fehler beim Senden. Bitte versuche es später.");
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-neutral-900 text-white flex flex-col items-center justify-center p-10">
