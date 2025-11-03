@@ -1,73 +1,45 @@
-import { useState } from "react";
-
 export default function Contact() {
-  const [formStatus, setFormStatus] = useState("");
-
- const handleSubmit = async (e) => {
-  e.preventDefault();
-  const formData = new FormData(e.target);
-  const data = Object.fromEntries(formData.entries());
-
-  try {
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-
-    if (res.ok) {
-      setFormStatus("Danke! Ich melde mich bald bei dir.");
-      e.target.reset();
-    } else {
-      setFormStatus("Fehler beim Senden. Bitte versuche es später.");
-    }
-  } catch (err) {
-    setFormStatus("Fehler beim Senden. Bitte versuche es später.");
-  }
-};
-
-
   return (
     <div className="min-h-screen bg-neutral-900 text-white flex flex-col items-center justify-center p-10">
-      <h1 className="text-4xl font-bold mb-6">Kontakt</h1>
-      <p className="text-gray-300 mb-6 text-center max-w-xl">
-        Schreib mir eine Nachricht, wenn du an Projekten interessiert bist oder
-        zusammenarbeiten möchtest.
-      </p>
+      <h1 className="text-4xl font-bold mb-6 font-montserrat">Kontakt</h1>
 
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-4 w-full max-w-md"
-      >
-        <input
-          type="text"
-          placeholder="Dein Name"
-          className="p-3 rounded-md bg-neutral-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        />
-        <input
-          type="email"
-          placeholder="Deine E-Mail"
-          className="p-3 rounded-md bg-neutral-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        />
-        <textarea
-          placeholder="Deine Nachricht"
-          className="p-3 rounded-md bg-neutral-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-          rows={5}
-          required
-        />
-        <button
-          type="submit"
-          className="bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md font-semibold transition"
+      <div className="text-center text-gray-300 text-lg space-y-3 font-montserrat">
+        <p className="font-semibold text-white">Christoph Welser</p>
+
+        <p>
+          <a
+            href="mailto:chr.welser@gmail.com"
+            className="hover:text-gray-100 transition underline underline-offset-4 decoration-gray-600 hover:decoration-gray-300"
+          >
+            chr.welser@gmail.com
+          </a>
+        </p>
+
+        <p>
+          <a
+            href="tel:+436508390333"
+            className="hover:text-gray-100 transition underline underline-offset-4 decoration-gray-600 hover:decoration-gray-300"
+          >
+            +43 650 8390333
+          </a>
+        </p>
+      </div>
+
+      {/* Social Icons */}
+      <div className="flex items-center gap-4 mt-6">
+        <a
+          href="https://instagram.com/christophwelser"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white opacity-80 hover:opacity-100 transition"
         >
-          Absenden
-        </button>
-      </form>
-
-      {formStatus && (
-        <p className="mt-4 text-green-400 font-medium text-center">{formStatus}</p>
-      )}
+          <img
+            src="/images/icons/instagram.svg"
+            alt="Instagram"
+            className="w-7 h-7"
+          />
+        </a>
+      </div>
     </div>
   );
 }
