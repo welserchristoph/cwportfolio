@@ -3,9 +3,9 @@ import ReactPlayer from "react-player";
 
 export default function EverythingBeautiful() {
   const video = {
-    title: "Kurzfilm – Everything Beautiful began After (unreleased)",
+    title: "Kurzfilm – Everything Beautiful began After",
     desc: "Ein interaktiver Kurzfilm über Misshandlung und Heilung.",
-    src: "https://vimeo.com/1106296097/d82d90d870",
+    src: "https://www.youtube.com/watch?v=B7L7n_7drmg",
     thumbnail: "/images/everything-beautiful-thumb.jpg",
   };
 
